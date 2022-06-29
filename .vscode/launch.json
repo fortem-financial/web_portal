@@ -1,0 +1,20 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"command": "npm start",
+			"name": "Run npm start",
+			"request": "launch",
+			"type": "node-terminal"
+		},
+		{
+			"name": "Run Playground test",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npm",
+			"runtimeArgs": ["--inspect-brk", "/usr/bin/yarn", "test"],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+		}
+	]
+}
