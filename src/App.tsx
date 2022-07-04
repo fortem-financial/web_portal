@@ -68,9 +68,10 @@ const RenderDeviceContainers = () => {
 		
 		
 		<React.Fragment>
+			<SBToggler />
 			<HeaderContainer />
 			<SidebarContainer />
-			<SBToggler />
+			
 			<CustomizationContainer />
 			<AlertsContainer />
 			<LayoutContainer />

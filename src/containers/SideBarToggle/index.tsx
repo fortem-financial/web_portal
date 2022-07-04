@@ -54,18 +54,18 @@ class SideBarToggler extends React.Component<Props> {
         if (!shouldRenderHeader || configsLoading) {
             return <React.Fragment />;
         }
-        if (userLoggedIn)
+        if (userLoggedIn) {
         return (
-            <div className={`headerDesktop-toggler`} onClick={this.openSidebar}>
+            <div className={`pg-sidebar__toggler`} onClick={this.openSidebar}>
                     	
-                        	<span className="headerDesktop-toggler-item"/>
-                        	<span className="headerDesktop-toggler-item"/>
+                            <span className="pg-sidebar__toggler-item"/>
+                        	<span className="pg-sidebar__toggler-item"/>
                         	<span className="pg-sidebar__toggler-item"/>
                     	
 
 
             </div>
-        ); else return (<div className={`headerDesktop-toggler-off`} ></div>)
+        );} else {return (<div className={`pg-sidebar__toggler-off`} ></div>)};
     }
 
 
