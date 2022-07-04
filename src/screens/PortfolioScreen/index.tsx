@@ -10,7 +10,7 @@ import { ProfileAuthDetails } from '../../containers/ProfileAuthDetails';
 import { ReferralProgram } from '../../containers/ReferralProgram';
 import { setDocumentTitle } from '../../helpers';
 
-class ProfileComponent extends React.Component<RouterProps, IntlProps> {
+class PortfolioComponent extends React.Component<RouterProps, IntlProps> {
 
     public componentDidMount() {
         setDocumentTitle('Profile');
@@ -54,7 +54,7 @@ class ProfileComponent extends React.Component<RouterProps, IntlProps> {
     }
 }
 
-export const ProfileScreen = compose(
+export const PortfolioScreen = compose(
     injectIntl,
     withRouter,
-)(ProfileComponent) as React.ComponentClass;
+)(PortfolioComponent) as React.ComponentClass;

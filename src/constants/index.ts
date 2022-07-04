@@ -4,8 +4,9 @@ export const PG_TITLE_PREFIX = 'FORTEM Financial';
 
 export const pgRoutes = (isLoggedIn: boolean, isLight?: boolean): string[][] => {
 	const routes = [
-		['page.header.navbar.trade', '/market/', `trade${isLight ? 'Light' : ''}`],
-		['page.header.navbar.wallets', '/wallets', `wallets${isLight ? 'Light' : ''}`],
+		//['page.header.navbar.trade', '/market/', `trade${isLight ? 'Light' : ''}`],
+		['page.header.navbar.dashboard', '/dashboard/', `dasboard${isLight ? 'Light' : ''}`],
+		['page.header.navbar.portfolio', '/portfolio', `wallets${isLight ? 'Light' : ''}`],
 		['page.header.navbar.openOrders', '/orders', `orders${isLight ? 'Light' : ''}`],
 		['page.header.navbar.history', '/history', `history${isLight ? 'Light' : ''}`],
 	];

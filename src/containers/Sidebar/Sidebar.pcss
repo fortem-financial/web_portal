@@ -1,30 +1,9 @@
-.pg-sidebar__toggler {
-	cursor: pointer;
-	display: block;
-	height: 14px;
-	margin-right: 18px;
-	width: 18px;
-
-	&-item {
-		background: var(--header-toggle-menu-icon);
-		border-radius: 5px;
-		display: block;
-		height: 2px;
-		margin-bottom: 5px;
-		transition: all 0.2s linear;
-		width: 18px;
-	}
-}
-
 .light-box {
 	box-shadow: 0 10px 15px var(--shadow-color-level-2);
 }
 
 .pg-sidebar-wrapper {
-	background-color: var(--sidebar-background-color);
-	box-shadow: 0 10px 15px var(--shadow-color-level-2);
-	width: 320px;
-	z-index: 99990;
+
 
 	.show > .btn-primary.dropdown-toggle {
 		background-color: var(--primary-cta-color) !important;
@@ -53,7 +32,8 @@
 		display: block;
 		left: 0;
 		position: absolute;
-		top: 64px;
+		top: 98px;
+		z-index: 99990; |important
 	}
 
 	&--hidden {
@@ -63,7 +43,7 @@
 	}
 
 	a {
-		color: var(--sidebar-text-color);
+		color: white;
 		text-decoration: none;
 	}
 
@@ -249,6 +229,7 @@
 		&--active {
 			bottom: 32px;
 			top: 50px;
+			z-index: 99990; |important
 		}
 	}
 }

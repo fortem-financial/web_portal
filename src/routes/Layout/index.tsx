@@ -1,3 +1,7 @@
+import { AirdropCoinListScreen } from 'plugins/AirdropCoin';
+import { CompetitionListingScreen, CompetitionDetailScreen } from 'plugins/Competition/screen';
+import { HolderStartingScreen } from 'plugins/Holder';
+import { VoteScreen } from 'plugins/Vote';
 import * as React from 'react';
 import { Button, Spinner } from 'react-bootstrap';
 import { injectIntl } from 'react-intl';
@@ -5,20 +9,16 @@ import { connect, MapDispatchToProps, MapStateToProps } from 'react-redux';
 import { Route, RouterProps, Switch } from 'react-router';
 import { Redirect, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import { minutesUntilAutoLogout, sessionCheckInterval } from '../../api';
+import { minutesUntilAutoLogout, sessionCheckInterval /* showLanding */ } from '../../api';
 import { AnnouncementDetail, NewModal } from '../../components';
 import { AdminAnnouncement, AnnouncementEdit, WalletsFetch } from '../../containers';
 import { MarketsList } from '../../containers/MarketsList';
 import { toggleColorTheme } from '../../helpers';
 import { IntlProps } from '../../index';
-import { AirdropCoinListScreen } from 'plugins/AirdropCoin';
-import { CompetitionListingScreen, CompetitionDetailScreen } from 'plugins/Competition/screen';
-import { HolderStartingScreen } from 'plugins/Holder';
-import { VoteScreen } from 'plugins/Vote';
 import { AirdropCoinListMobileScreen, StakingDetailMobileScreen, StakingListMobileScreen } from '../../mobile/plugins';
 import { IEODetailMobileScreen, IEOListMobileScreen } from '../../mobile/plugins/IEO';
 import { TradingCompetionListMobileScreen, TradingCompetitionDetailMobileScreen } from '../../mobile/plugins/TradingCompetion';
-
+/* import { isMobile } from "react-device-detect"; */
 import {
 	ChangeForgottenPasswordMobileScreen,
 	ConfirmMobileScreen,
@@ -66,7 +66,8 @@ import {
 } from '../../modules';
 import { CustomizationDataInterface, customizationFetch, selectCustomizationData } from '../../modules/public/customization';
 import { AirdropDetail, AirdropList } from '../../plugins/Airdrop';
-import { SaleListScreen, SaleDetailScreen } from '../../plugins/Sale';
+import { IEODetailScreen } from '../../plugins/IEO/screen/IEODetailScreen';
+import { IEOListingScreen } from '../../plugins/IEO/screen/IEOListingScreen';
 import { StakingDetailScreen, StakingListScreen } from '../../plugins/Stake';
 import {
 	AnnouncementScreen,
@@ -91,6 +92,7 @@ import {
 	WalletListScreen,
 	WithdrawScreen,
 	FortemIOHomePage,
+	PortfolioScreen,
 } from '../../screens';
 
 interface ReduxProps {
@@ -239,7 +241,7 @@ class LayoutComponent extends React.Component<LayoutProps, LayoutState> {
 			return renderLoader();
 		}
 
-		if (isMobileDevice) {
+		if (isMobileDevice /* && isMobile */) {
 			return (
 				<div className={'container-fluid pg-layout pg-layout--mobile'}>
 					<Switch>
@@ -490,9 +492,18 @@ class LayoutComponent extends React.Component<LayoutProps, LayoutState> {
 						path="/security/2fa"
 						component={ProfileTwoFactorAuthScreen}
 					/>
+					<PrivateRoute
+						loading={userLoading}
+						isLogged={isLoggedIn}
+						path="/dashboard"
+						component={PortfolioScreen}
+					/>
 					<Route path="/holder/starting" exact component={HolderStartingScreen} />
 
+					{/* new feature */}
 					<Route path="/airdrops" exact component={AirdropCoinListScreen} />
+					{/* new feature */}
+					{/* old feature */}
 					<Route path="/airdrop" exact component={AirdropList} />
 					<PrivateRoute
 						loading={userLoading}
@@ -500,8 +511,9 @@ class LayoutComponent extends React.Component<LayoutProps, LayoutState> {
 						path="/airdrop/detail/:airdropID"
 						component={AirdropDetail}
 					/>
-					<Route path="/ieo" exact component={SaleListScreen} />
-					<Route path="/ieo/detail/:ieoID" exact component={SaleDetailScreen} />
+					{/* old feature */}
+					<Route path="/ieo" exact component={IEOListingScreen} />
+					<Route path="/ieo/detail/:ieoID" exact component={IEODetailScreen} />
 					<Route path="/vote" exact component={VoteScreen} />
 					<Route path="/trading-competition" exact component={CompetitionListingScreen} />
 					<Route path="/trading-competition/:competition_id" exact component={CompetitionDetailScreen} />

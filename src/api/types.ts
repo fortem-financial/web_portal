@@ -20,6 +20,7 @@ export interface Config {
 	isResizable: boolean;
 	isDraggable: boolean;
 	languages: string[];
+	usernameEnabled: boolean;
 	sessionCheckInterval: string;
 	balancesFetchInterval: string;
 	passwordEntropyStep: number;

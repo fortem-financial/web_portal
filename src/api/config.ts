@@ -3,12 +3,12 @@ import { Config } from './types';
 
 export const defaultConfig: Config = {
 	api: {
-		authzURL: 'https://demo.fortem-financial.io/api/v2/authz',
-		switchURL: 'https://demo.fortem-financial.io/api/v2/switch',
-		transactionURL: 'https://demo.fortem-financial.io/api/v2/fortem',
-		ieoURL: 'https://api.fortem-financial.io/api/v2/fortem',
+		authzURL: 'http://demo.fortem-financial.io/api/v2/authz',
+		switchURL: 'http://demo.fortem-financial.io/api/v2/switch',
+		transactionURL: 'http://demo.fortem-financial.io/api/v2/fortem',
+		ieoURL: 'http://api.fortem-financial.io/api/v2/fortem',
 
-		downstreamURL: 'wss://demo.fortem-financial.io/api/v2/downstream',
+		downstreamURL: 'ws://demo.fortem-financial.io/api/v2/downstream',
 	},
 	minutesUntilAutoLogout: '50',
 	rangerReconnectPeriod: '1',
@@ -21,11 +21,13 @@ export const defaultConfig: Config = {
 	isResizable: false,
 	isDraggable: false,
 	languages: ['en'],
+	usernameEnabled: false,
 	sessionCheckInterval: '15000',
 	balancesFetchInterval: '3000',
 	passwordEntropyStep: 0,
 	showLanding: true,
 	sentryEnabled: false,
+
 };
 
 export const Cryptobase = {
@@ -68,3 +70,4 @@ export const passwordEntropyStep = (): number => Cryptobase.config.passwordEntro
 export const showLanding = (): boolean => Cryptobase.config.showLanding;
 export const sentryEnabled = () => Cryptobase.config.sentryEnabled || defaultConfig.sentryEnabled;
 export const kycSteps = (): string[] => Cryptobase.config.kycSteps || DEFAULT_KYC_STEPS;
+export const isUsernameEnabled = (): boolean => Cryptobase.config.usernameEnabled;

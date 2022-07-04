@@ -6,6 +6,7 @@ import { Sun } from '../../assets/images/Sun';
 import { colors } from '../../constants';
 import { changeColorTheme, RootState, selectCurrentColorTheme } from '../../modules';
 
+
 export interface ReduxProps {
 	colorTheme: string;
 }

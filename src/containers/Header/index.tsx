@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+//import { TOGGLE_SIDEBAR } from 'modules/public/globalSettings/constants';
 import * as React from 'react';
 import { FaAward, FaGift, FaHistory, FaSignOutAlt, FaStar, FaUserCircle, FaUserPlus } from 'react-icons/fa';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -6,11 +7,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { logoutFetch, selectUserLoggedIn } from '../../modules';
 
+
+
 const Logo = require('../../assets/images/logo.svg');
+
+//var SidebarContainer = React.lazy(() => import('../../containers/Sidebar').then(({ Sidebar }) => ({ default: Sidebar })));
+const SBToggler = React.lazy(() => import('../SideBarToggle').then(({ SideBarToggle }) => ({ default: SideBarToggle })));
+
 
 export const Header: React.FC = () => {
 	const history = useHistory();
 	const intl = useIntl();
+
 	const isLoggedIn = useSelector(selectUserLoggedIn);
 	const [activeNow, setActiveNow] = React.useState('');
 	const [activeItemDrop, setActiveItemDrop] = React.useState('');
@@ -38,6 +46,15 @@ export const Header: React.FC = () => {
 			'header__right-menu__dropdown__wrap__dropbtn--active': activeNow === nameActive,
 		});
 	};
+	
+	const renderSidebarToggle = () => {
+	
+		return (
+				<SBToggler />
+			)
+		
+	};
+	if (isLoggedIn) renderSidebarToggle();
 
 	const renderWalletLink = () => {
 		const classItemTitle = classNames('header__right-menu__item__title', {
@@ -48,7 +65,7 @@ export const Header: React.FC = () => {
 			isLoggedIn && (
 				<div className="header__right-menu__item ">
 					<div className={classItemTitle} onClick={() => setStateActiveNow('Wallet')}>
-						<Link to="/wallets">Wallet</Link>
+						<Link to="/wallets">My Wallets</Link>
 					</div>
 				</div>
 			)
@@ -174,6 +191,9 @@ export const Header: React.FC = () => {
 		);
 	};
 
+	
+
+
 	const redirectSingIn = () => {
 		history.push('/login');
 	};
@@ -220,9 +240,11 @@ export const Header: React.FC = () => {
 			)
 		);
 	};
-
+	
 	return (
+
 		<div className="headerDesktop-screen">
+
 			<div className="container-header">
 				<nav className="header d-flex flex-row justify-content-between align-items-center">
 					<div className="header__left-menu d-flex flex-row align-items-center">
@@ -419,10 +441,12 @@ export const Header: React.FC = () => {
 					</div>
 
 					<div className="header__right-menu d-flex align-items-center flex-row">
+					
 						{renderUnLogin()}
 						{renderWalletLink()}
 						{renderOrderTab()}
 						{renderProfileTab()}
+
 					</div>
 				</nav>
 			</div>

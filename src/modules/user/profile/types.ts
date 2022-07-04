@@ -21,6 +21,7 @@ export interface Phone {
 }
 
 export interface User {
+	username?: string;
 	email: string;
 	level: number;
 	otp: boolean;

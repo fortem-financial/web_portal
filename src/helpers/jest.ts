@@ -21,6 +21,7 @@ const mockConfig: Config = {
 	storage: {},
 	gaTrackerKey: '',
 	incrementalOrderBook: false,
+	usernameEnabled: false,
 	finex: false,
 	isResizable: false,
 	isDraggable: false,

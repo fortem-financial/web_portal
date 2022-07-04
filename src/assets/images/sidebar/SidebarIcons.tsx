@@ -64,7 +64,7 @@ export const SidebarIcons: React.FC<SidebarIconsProps> = (props: SidebarIconsPro
 					/>
 				</svg>
 			);
-		case 'trade':
+		case 'dasboard':
 			return (
 				<svg width="18" height="18" viewBox="0 0 18 18" className={props.className} fill="none">
 					<path d="M18 16.9453H0V18H18V16.9453Z" fill="var(--icons)" />
